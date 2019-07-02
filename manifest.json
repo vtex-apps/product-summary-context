@@ -1,0 +1,13 @@
+{
+  "name": "product-summary-context",
+  "vendor": "vtex",
+  "version": "0.0.4",
+  "title": "VTEX Product Summary Context",
+  "description": "",
+  "settingsSchema": {},
+  "dependencies": {},
+  "builders": {
+    "react": "3.x"
+  },
+  "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
+}
