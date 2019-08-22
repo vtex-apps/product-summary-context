@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- `SET_QUANTITY` to the dispatch
+- `selectedItem` and `selectedQuantity` variables to the context
+
 ## [0.1.0] - 2019-07-02
 
 ### Added
