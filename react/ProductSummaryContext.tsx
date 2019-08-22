@@ -51,6 +51,7 @@ export function reducer(state: State, action: Action) {
       return {
         ...state,
         product: product,
+        //TODO: STOP USING PRODUCT.SKU https://app.clubhouse.io/vtex/story/18547/productsummarycontext-refactor
         selectedItem: product.sku
       }
     }
