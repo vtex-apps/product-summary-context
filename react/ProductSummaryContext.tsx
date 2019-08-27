@@ -8,6 +8,8 @@ interface State {
   product: any
   isHovering: boolean
   isLoading: boolean
+  selectedItem: any,
+  selectedQuantity: number,
 }
 
 type Dispatch = (action: Action) => void
@@ -33,14 +35,24 @@ type SetLoadingAction = {
   }
 }
 
-type Action = SetProductAction | SetHoverAction | SetLoadingAction
+type SetProductQuantity = {
+  type: 'SET_QUANTITY'
+  args: {
+    quantity: number
+  }
+}
+
+type Action = SetProductAction | SetHoverAction | SetLoadingAction | SetProductQuantity
 
 export function reducer(state: State, action: Action) {
   switch (action.type) {
     case 'SET_PRODUCT': {
+      const product = action.args.product
       return {
         ...state,
-        product: action.args.product,
+        product: product,
+        //TODO: STOP USING PRODUCT.SKU https://app.clubhouse.io/vtex/story/18547/productsummarycontext-refactor
+        selectedItem: product.sku
       }
     }
     case 'SET_HOVER': {
@@ -55,6 +67,12 @@ export function reducer(state: State, action: Action) {
         isLoading: action.args.isLoading
       }
     }
+    case 'SET_QUANTITY': {
+      return {
+        ...state,
+        selectedQuantity: action.args.quantity,
+      }
+    }
     default:
       return state
   }
@@ -65,6 +83,8 @@ function ProductSummaryProvider({ product, children }) {
     product,
     isHovering: false,
     isLoading: false,
+    selectedItem: null,
+    selectedQuantity: 1,
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)
