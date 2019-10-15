@@ -10,6 +10,7 @@ interface State {
   isLoading: boolean
   selectedItem: any,
   selectedQuantity: number,
+  productQuery?: string,
 }
 
 type Dispatch = (action: Action) => void
@@ -18,6 +19,13 @@ type SetProductAction = {
   type: 'SET_PRODUCT',
   args: {
     product: any
+  }
+}
+
+type SetProductQueryAction = {
+  type: 'SET_PRODUCT_QUERY',
+  args: {
+    query: string
   }
 }
 
@@ -42,7 +50,7 @@ type SetProductQuantity = {
   }
 }
 
-type Action = SetProductAction | SetHoverAction | SetLoadingAction | SetProductQuantity
+type Action = SetProductAction | SetHoverAction | SetLoadingAction | SetProductQuantity | SetProductQueryAction
 
 export function reducer(state: State, action: Action) {
   switch (action.type) {
@@ -73,6 +81,11 @@ export function reducer(state: State, action: Action) {
         selectedQuantity: action.args.quantity,
       }
     }
+    case 'SET_PRODUCT_QUERY':
+      return {
+        ...state,
+        query: action.args.query,
+      }
     default:
       return state
   }
