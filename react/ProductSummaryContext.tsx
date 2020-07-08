@@ -1,14 +1,16 @@
 import React, { useReducer } from 'react'
 import { createContext, useContext } from 'react'
+import querystring from 'query-string'
+import { Product, SKU } from './typings/product'
 
 const ProductSummaryContext = createContext<State | undefined>(undefined)
 const ProductDispatchContext = createContext<Dispatch | undefined>(undefined)
 
 interface State {
-  product: any
+  product: Product
   isHovering: boolean
   isLoading: boolean
-  selectedItem: any,
+  selectedItem: SKU,
   selectedQuantity: number,
   productQuery?: string,
 }
@@ -18,7 +20,7 @@ type Dispatch = (action: Action) => void
 type SetProductAction = {
   type: 'SET_PRODUCT',
   args: {
-    product: any
+    product: Product
   }
 }
 
@@ -91,6 +93,23 @@ export function reducer(state: State, action: Action) {
   }
 }
 
+const buildProductQuery = ((product: Product) => {
+  const selectedProperties = product.selectedProperties
+
+  if (!selectedProperties) {
+    return
+  }
+
+  const query = {}
+
+  selectedProperties.forEach(property => {
+    const {key, value} = property
+    query[`property__${key}`] = value
+  })
+
+  return querystring.stringify(query)
+})
+
 function ProductSummaryProvider({ product, children }) {
   const initialState = {
     product,
@@ -98,6 +117,7 @@ function ProductSummaryProvider({ product, children }) {
     isLoading: false,
     selectedItem: null,
     selectedQuantity: 1,
+    query: buildProductQuery(product)
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)
