@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- `property__VariationName=VariationValue` query string to the product query.
+
 ## [0.3.0] - 2019-10-15
 ### Added
 - `SET_PRODUCT_QUERY` action
