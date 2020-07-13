@@ -21,6 +21,7 @@ type SetProductAction = {
   type: 'SET_PRODUCT',
   args: {
     product: Product
+    selectedItem: SKU
   }
 }
 
@@ -62,7 +63,7 @@ export function reducer(state: State, action: Action) {
         ...state,
         product: product,
         //TODO: STOP USING PRODUCT.SKU https://app.clubhouse.io/vtex/story/18547/productsummarycontext-refactor
-        selectedItem: product.sku
+        selectedItem: action.args.selectedItem ?? product.sku
       }
     }
     case 'SET_HOVER': {
@@ -110,12 +111,12 @@ const buildProductQuery = ((product: Product) => {
   return querystring.stringify(query)
 })
 
-function ProductSummaryProvider({ product, children }) {
+function ProductSummaryProvider({ product, selectedItem, children }) {
   const initialState = {
     product,
     isHovering: false,
     isLoading: false,
-    selectedItem: null,
+    selectedItem: selectedItem ?? null,
     selectedQuantity: 1,
     query: buildProductQuery(product)
   }
