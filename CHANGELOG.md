@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+- Send `product` and `selectedItem` to `ProductGroupContext`.
+
 ## [0.4.2] - 2020-07-20
 
 ### Fixed

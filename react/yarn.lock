@@ -58,3 +58,11 @@ strict-uri-encode@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz#279b225df1d582b1f54e65addd4352e18faa0713"
   integrity sha1-J5siXfHVgrH1TmWt3UNS4Y+qBxM=
+
+"vtex.product-group-context@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-group-context@0.1.0/public/@types/vtex.product-group-context":
+  version "0.1.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-group-context@0.1.0/public/@types/vtex.product-group-context#1117d509c8374813b947756c56cf6277e95ad773"
+
+"vtex.render-runtime@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.111.0/public/@types/vtex.render-runtime":
+  version "8.111.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.111.0/public/@types/vtex.render-runtime#01b2ce53d1aa2a974f5229c61bd9c83b43a86d76"
