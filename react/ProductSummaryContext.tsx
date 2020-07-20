@@ -95,7 +95,7 @@ export function reducer(state: State, action: Action) {
 }
 
 const buildProductQuery = ((product: Product) => {
-  const selectedProperties = product.selectedProperties
+  const selectedProperties = product?.selectedProperties
 
   if (!selectedProperties) {
     return
