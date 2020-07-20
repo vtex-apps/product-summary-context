@@ -1,7 +1,7 @@
 {
   "name": "product-summary-context",
   "vendor": "vtex",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "title": "VTEX Product Summary Context",
   "description": "",
   "settingsSchema": {},
