@@ -97,16 +97,20 @@ export function reducer(state: State, action: Action) {
 const buildProductQuery = ((product: Product) => {
   const selectedProperties = product?.selectedProperties
 
-  if (!selectedProperties) {
+  if (!selectedProperties || selectedProperties.length === 0) {
     return
   }
 
-  const query = {}
+  const query = selectedProperties.reduce(
+    (query, property, idx) => {
+      const { key, value } = property
+      query.propertyName += `${idx > 0 ? "," : ""}${key}`
+      query.propertyValue += `${idx > 0 ? "," : ""}${value}`
 
-  selectedProperties.forEach(property => {
-    const {key, value} = property
-    query[`property__${key}`] = value
-  })
+      return query
+    },
+    { propertyName: "", propertyValue: "" }
+  )
 
   return querystring.stringify(query)
 })
