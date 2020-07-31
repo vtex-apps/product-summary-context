@@ -6,7 +6,8 @@
     "target": "esnext",
     "jsx": "react",
     "lib": ["dom", "es7"],
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "skipLibCheck": true
   },
   "lib": ["dom", "es7"]
 }

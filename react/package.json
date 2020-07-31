@@ -2,7 +2,9 @@
   "devDependencies": {
     "@types/node": "^11.13.4",
     "@types/query-string": "5",
-    "@types/react": "^16.8.13"
+    "@types/react": "^16.8.13",
+    "vtex.product-group-context": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-group-context@0.1.0/public/@types/vtex.product-group-context",
+    "vtex.render-runtime": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.111.0/public/@types/vtex.render-runtime"
   },
   "dependencies": {
     "query-string": "5",

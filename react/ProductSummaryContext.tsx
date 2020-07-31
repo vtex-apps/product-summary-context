@@ -1,7 +1,11 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useEffect } from 'react'
 import { createContext, useContext } from 'react'
 import querystring from 'query-string'
+import { ProductGroupContext } from 'vtex.product-group-context'
+
 import { Product, SKU } from './typings/product'
+
+const { useProductGroup } = ProductGroupContext
 
 const ProductSummaryContext = createContext<State | undefined>(undefined)
 const ProductDispatchContext = createContext<Dispatch | undefined>(undefined)
@@ -122,6 +126,19 @@ function ProductSummaryProvider({ product, selectedItem, children }) {
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)
+
+  const productGroupContext = useProductGroup()
+
+  useEffect(() => {
+    if (!productGroupContext) {
+      return
+    }
+
+    const { addItemToGroup } = productGroupContext
+    const removeItemFromGroup = addItemToGroup(state.product, state.selectedItem ?? state.product.items[0])
+
+    return () => removeItemFromGroup()
+  }, [state.selectedItem, state.product])
 
   return (
     <ProductSummaryContext.Provider value={state}>

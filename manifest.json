@@ -5,7 +5,9 @@
   "title": "VTEX Product Summary Context",
   "description": "",
   "settingsSchema": {},
-  "dependencies": {},
+  "dependencies": {
+    "vtex.product-group-context": "0.x"
+  },
   "builders": {
     "react": "3.x",
     "docs": "0.x"
