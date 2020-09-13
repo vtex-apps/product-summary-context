@@ -115,11 +115,11 @@ const buildProductQuery = ((product: Product) => {
   return querystring.stringify(query)
 })
 
-function ProductSummaryProvider({ product, selectedItem, children }) {
+function ProductSummaryProvider({ product, selectedItem, isLoading, children }) {
   const initialState = {
     product,
     isHovering: false,
-    isLoading: false,
+    isLoading: Boolean(isLoading),
     selectedItem: selectedItem ?? null,
     selectedQuantity: 1,
     query: buildProductQuery(product)
