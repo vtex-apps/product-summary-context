@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- `isLoading` as a `ProductSummaryProvider` parameter. 
+- `isLoading` as a `ProductSummaryProvider` parameter.
+- `inView` parameter and `SET_IN_VIEW` action.
 
 ## [0.4.3] - 2020-07-31
 
