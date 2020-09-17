@@ -139,7 +139,7 @@ function ProductSummaryProvider({ product, selectedItem, isLoading=false, childr
   const initialState = {
     product,
     isHovering: false,
-    isLoading: isLoading,
+    isLoading,
     selectedItem: selectedItem ?? null,
     selectedQuantity: 1,
     query: buildProductQuery(product),
