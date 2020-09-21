@@ -16,7 +16,8 @@ interface State {
   isLoading: boolean
   selectedItem: SKU,
   selectedQuantity: number,
-  productQuery?: string,
+  inView: boolean
+  productQuery?: string
 }
 
 type Dispatch = (action: Action) => void
@@ -57,7 +58,20 @@ type SetProductQuantity = {
   }
 }
 
-type Action = SetProductAction | SetHoverAction | SetLoadingAction | SetProductQuantity | SetProductQueryAction
+type SetInView = {
+  type: 'SET_IN_VIEW'
+  args: {
+    inView: boolean
+  }
+}
+
+type Action =
+  | SetProductAction
+  | SetHoverAction
+  | SetLoadingAction
+  | SetProductQuantity
+  | SetProductQueryAction
+  | SetInView
 
 export function reducer(state: State, action: Action) {
   switch (action.type) {
@@ -93,6 +107,12 @@ export function reducer(state: State, action: Action) {
         ...state,
         query: action.args.query,
       }
+    case 'SET_IN_VIEW':
+      return {
+        ...state,
+        inView: action.args.inView,
+      }
+
     default:
       return state
   }
@@ -115,14 +135,15 @@ const buildProductQuery = ((product: Product) => {
   return querystring.stringify(query)
 })
 
-function ProductSummaryProvider({ product, selectedItem, children }) {
+function ProductSummaryProvider({ product, selectedItem, isLoading=false, children }) {
   const initialState = {
     product,
     isHovering: false,
-    isLoading: false,
+    isLoading,
     selectedItem: selectedItem ?? null,
     selectedQuantity: 1,
-    query: buildProductQuery(product)
+    query: buildProductQuery(product),
+    inView: false,
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)
@@ -150,23 +171,11 @@ function ProductSummaryProvider({ product, selectedItem, children }) {
 }
 
 function useProductSummaryDispatch() {
-  const context = useContext(ProductDispatchContext)
-
-  if (context === undefined) {
-    throw new Error('useProductSummaryDispatch must be used within a ProductSummaryDispatchProvider')
-  }
-
-  return context
+  return useContext(ProductDispatchContext)
 }
 
 function useProductSummary() {
-  const context = useContext(ProductSummaryContext)
-
-  if (context === undefined) {
-    throw new Error('useProductSummary must be used within a ProductSummaryProvider')
-  }
-
-  return context
+  return useContext(ProductSummaryContext)
 }
 
 export default {

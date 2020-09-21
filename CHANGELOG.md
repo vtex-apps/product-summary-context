@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- `isLoading` as a `ProductSummaryProvider` parameter.
+- `inView` parameter and `SET_IN_VIEW` action.
 
 ## [0.4.3] - 2020-07-31
 
