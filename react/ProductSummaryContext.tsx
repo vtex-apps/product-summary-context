@@ -14,6 +14,7 @@ interface State {
   product: Product
   isHovering: boolean
   isLoading: boolean
+  isPriceLoading: boolean
   selectedItem: SKU,
   selectedQuantity: number,
   inView: boolean
@@ -51,6 +52,13 @@ type SetLoadingAction = {
   }
 }
 
+type SetPriceLoadingAction = {
+  type: 'SET_PRICE_LOADING'
+  args: {
+    isPriceLoading: boolean
+  }
+}
+
 type SetProductQuantity = {
   type: 'SET_QUANTITY'
   args: {
@@ -69,6 +77,7 @@ type Action =
   | SetProductAction
   | SetHoverAction
   | SetLoadingAction
+  | SetPriceLoadingAction
   | SetProductQuantity
   | SetProductQueryAction
   | SetInView
@@ -94,6 +103,12 @@ export function reducer(state: State, action: Action) {
       return {
         ...state,
         isLoading: action.args.isLoading
+      }
+    }
+    case 'SET_PRICE_LOADING': {
+      return {
+        ...state,
+        isPriceLoading: action.args.isPriceLoading,
       }
     }
     case 'SET_QUANTITY': {
@@ -135,11 +150,18 @@ const buildProductQuery = ((product: Product) => {
   return querystring.stringify(query)
 })
 
-function ProductSummaryProvider({ product, selectedItem, isLoading=false, children }) {
+function ProductSummaryProvider({
+  product,
+  selectedItem,
+  isLoading = false,
+  isPriceLoading = false,
+  children,
+}) {
   const initialState = {
     product,
     isHovering: false,
     isLoading,
+    isPriceLoading,
     selectedItem: selectedItem ?? null,
     selectedQuantity: 1,
     query: buildProductQuery(product),
@@ -179,6 +201,7 @@ function useProductSummary() {
 }
 
 export default {
+  ProductSummaryConsumer: ProductSummaryContext.Consumer,
   ProductSummaryProvider,
   useProductSummary,
   useProductSummaryDispatch,
