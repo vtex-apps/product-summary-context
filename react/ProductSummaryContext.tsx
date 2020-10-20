@@ -201,7 +201,6 @@ function useProductSummary() {
 }
 
 export default {
-  ProductSummaryConsumer: ProductSummaryContext.Consumer,
   ProductSummaryProvider,
   useProductSummary,
   useProductSummaryDispatch,
