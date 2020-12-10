@@ -104,5 +104,3 @@ interface SelectedProperty {
   key: string;
   value: string
 }
-
-export const Keep = {}
