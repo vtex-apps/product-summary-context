@@ -29,14 +29,13 @@ export interface Product {
   sku: SingleSKU
 }
 
-export interface SingleSKU extends SKU {
-  image: Image
-  seller: Seller
-}
-
-interface Category {
-  id: string
-  name: string
+interface Image {
+  cacheId: string
+  imageId: string
+  imageLabel: string
+  imageTag: string
+  imageText: string
+  imageUrl: string
 }
 
 export interface SKU {
@@ -48,13 +47,14 @@ export interface SKU {
   images: Image[]
 }
 
-interface Image {
-  cacheId: string
-  imageId: string
-  imageLabel: string
-  imageTag: string
-  imageText: string
-  imageUrl: string
+export interface SingleSKU extends SKU {
+  image: Image
+  seller: Seller
+}
+
+interface Category {
+  id: string
+  name: string
 }
 
 interface PriceRangeOptions {
