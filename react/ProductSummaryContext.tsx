@@ -1,25 +1,14 @@
-import React, { useReducer, useEffect } from 'react'
+import React, { useReducer, useEffect, PropsWithChildren } from 'react'
 import { createContext, useContext } from 'react'
 import querystring from 'query-string'
 import { ProductGroupContext } from 'vtex.product-group-context'
 
-import { Product, SKU } from './typings/product'
+import { Product, SingleSKU, SKU, State } from './ProductSummaryTypes'
 
 const { useProductGroup } = ProductGroupContext
 
 const ProductSummaryContext = createContext<State | undefined>(undefined)
 const ProductDispatchContext = createContext<Dispatch | undefined>(undefined)
-
-interface State {
-  product: Product
-  isHovering: boolean
-  isLoading: boolean
-  isPriceLoading: boolean
-  selectedItem: SKU,
-  selectedQuantity: number,
-  inView: boolean
-  productQuery?: string
-}
 
 type Dispatch = (action: Action) => void
 
@@ -27,7 +16,7 @@ type SetProductAction = {
   type: 'SET_PRODUCT',
   args: {
     product: Product
-    selectedItem: SKU
+    selectedItem?: SingleSKU
   }
 }
 
@@ -82,7 +71,7 @@ type Action =
   | SetProductQueryAction
   | SetInView
 
-export function reducer(state: State, action: Action) {
+export function reducer(state: State, action: Action): State {
   switch (action.type) {
     case 'SET_PRODUCT': {
       const product = action.args.product
@@ -150,13 +139,20 @@ const buildProductQuery = ((product: Product) => {
   return querystring.stringify(query)
 })
 
+interface ProviderProps {
+  product: Product
+  selectedItem?: SingleSKU
+  isLoading?: boolean
+  isPriceLoading?: boolean
+}
+
 function ProductSummaryProvider({
   product,
   selectedItem,
   isLoading = false,
   isPriceLoading = false,
   children,
-}) {
+}: PropsWithChildren<ProviderProps>) {
   const initialState = {
     product,
     isHovering: false,
