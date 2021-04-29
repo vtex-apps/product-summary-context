@@ -70,6 +70,7 @@ interface PriceRange {
 export interface Seller {
   commertialOffer: CommertialOffer
   sellerId: string
+  sellerDefault: boolean
 }
 
 interface CommertialOffer {
