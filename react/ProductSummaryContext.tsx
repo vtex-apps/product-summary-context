@@ -122,7 +122,12 @@ export function reducer(state: State, action: Action): State {
   }
 }
 
-const buildProductQuery = ((product: Product, listName?: string) => {
+interface BuildProductQueryParams {
+  product: Product
+  listName?: string
+}
+
+const buildProductQuery = (({ product, listName }: BuildProductQueryParams) => {
   const selectedProperties = product?.selectedProperties
 
   if (!selectedProperties && !listName) {
@@ -162,7 +167,7 @@ function ProductSummaryProvider({
     isPriceLoading,
     selectedItem: selectedItem ?? null,
     selectedQuantity: 1,
-    query: buildProductQuery(product, listName),
+    query: buildProductQuery({ product, listName }),
     inView: false,
   }
 
