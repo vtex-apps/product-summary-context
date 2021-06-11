@@ -7,6 +7,7 @@ export interface State {
   selectedQuantity: number,
   inView: boolean
   productQuery?: string
+  listName?: string
   query?: string
 }
 

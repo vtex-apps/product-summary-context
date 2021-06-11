@@ -124,19 +124,18 @@ export function reducer(state: State, action: Action): State {
 
 interface BuildProductQueryParams {
   product: Product
-  listName?: string
 }
 
-const buildProductQuery = (({ product, listName }: BuildProductQueryParams) => {
+const buildProductQuery = (({ product }: BuildProductQueryParams) => {
   const selectedProperties = product?.selectedProperties
 
-  if (!selectedProperties && !listName) {
+  if (!selectedProperties) {
     return
   }
 
-  const query = { listName: listName ? encodeURIComponent(listName) : undefined }
+  const query = {}
 
-  selectedProperties?.forEach(property => {
+  selectedProperties.forEach(property => {
     const {key, value} = property
     query[`property__${key}`] = value
   })
@@ -167,7 +166,8 @@ function ProductSummaryProvider({
     isPriceLoading,
     selectedItem: selectedItem ?? null,
     selectedQuantity: 1,
-    query: buildProductQuery({ product, listName }),
+    listName,
+    query: buildProductQuery({ product }),
     inView: false,
   }
 
