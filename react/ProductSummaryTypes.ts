@@ -24,9 +24,7 @@ export interface Product {
   productName: string;
   productId: string;
   productReference: string;
-  productClusters: Array<{
-      name: string;
-  }>;
+  productClusters: Array<{name: string;}>;
   selectedProperties: SelectedProperty[];
   skuSpecifications: SkuSpecification[];
   sku: SingleSKU;
