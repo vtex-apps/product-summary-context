@@ -23,7 +23,7 @@ export interface Product {
   priceRange: PriceRangeOptions;
   productName: string;
   productId: string;
-  productReference: string;
+  productReference?: string;
   productClusters: Array<{name: string;}>;
   selectedProperties: SelectedProperty[];
   skuSpecifications: SkuSpecification[];
