@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Added
-- `productReference` prop to `Product`
+- `productReference` property to `Product`
 
 ## [0.8.1] - 2021-06-28
 ### Changed
