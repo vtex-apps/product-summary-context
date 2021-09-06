@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Add `spotPrice` to the `CommertialOffer` interface.
+
 ## [0.8.1] - 2021-06-28
 ### Changed
 - `listName` to state properties and removed from querystring

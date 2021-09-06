@@ -79,6 +79,7 @@ interface CommertialOffer {
   Installments: Installment[]
   ListPrice: number
   Price: number
+  spotPrice?: number
 }
 
 interface Installment {
