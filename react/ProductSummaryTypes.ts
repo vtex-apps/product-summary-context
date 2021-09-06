@@ -12,22 +12,23 @@ export interface State {
 }
 
 export interface Product {
-  linkText: string
-  description: string
-  productName: string
-  brand: string
-  brandId: number
-  categoryId: string
-  categoryTree: Category[]
-  productId: string
-  titleTag: string
-  metaTagDescription: string
-  items: SKU[]
-  skuSpecifications: SkuSpecification[]
-  selectedProperties: SelectedProperty[]
-  productClusters: Array<{ name: string }>
-  priceRange: PriceRangeOptions
-  sku: SingleSKU
+  brand: string;
+  brandId: number;
+  categoryId: string;
+  categoryTree: Category[];
+  description: string;
+  items: SKU[];
+  linkText: string;
+  metaTagDescription: string;
+  priceRange: PriceRangeOptions;
+  productName: string;
+  productId: string;
+  productReference?: string;
+  productClusters: Array<{name: string;}>;
+  selectedProperties: SelectedProperty[];
+  skuSpecifications: SkuSpecification[];
+  sku: SingleSKU;
+  titleTag: string;
 }
 
 interface Image {
