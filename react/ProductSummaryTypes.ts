@@ -12,6 +12,7 @@ export interface State {
 }
 
 export interface Product {
+  advertisement: Advertisement;
   brand: string;
   brandId: number;
   categoryId: string;
@@ -29,6 +30,14 @@ export interface Product {
   skuSpecifications: SkuSpecification[];
   sku: SingleSKU;
   titleTag: string;
+}
+
+interface Advertisement {
+  adId: string;
+  campaignId: string;
+  adRequestId: string;
+  adResponseId: string;
+  actionCost: number;
 }
 
 interface Image {
