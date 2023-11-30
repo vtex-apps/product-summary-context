@@ -9,6 +9,7 @@ export interface State {
   productQuery?: string
   listName?: string
   query?: string
+  position?: number
 }
 
 export interface Product {
