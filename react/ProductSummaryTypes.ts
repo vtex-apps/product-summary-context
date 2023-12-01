@@ -38,6 +38,11 @@ interface Advertisement {
   adRequestId: string;
   adResponseId: string;
   actionCost: number;
+  options?: AdvertisementOptions;
+}
+
+interface AdvertisementOptions {
+  hideSponsoredBadge?: boolean;
 }
 
 interface Image {
