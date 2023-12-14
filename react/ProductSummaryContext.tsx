@@ -3,7 +3,7 @@ import { createContext, useContext } from 'react'
 import querystring from 'query-string'
 import { ProductGroupContext } from 'vtex.product-group-context'
 
-import { Product, SingleSKU, SKU, State } from './ProductSummaryTypes'
+import { Product, SingleSKU, SKU, SponsoredBadgeOptions, State } from './ProductSummaryTypes'
 
 const { useProductGroup } = ProductGroupContext
 
@@ -149,6 +149,7 @@ interface ProviderProps {
   isLoading?: boolean
   isPriceLoading?: boolean
   listName?: string
+  sponsoredBadge?: SponsoredBadgeOptions
 }
 
 function ProductSummaryProvider({
@@ -157,6 +158,7 @@ function ProductSummaryProvider({
   isLoading = false,
   isPriceLoading = false,
   listName = null,
+  sponsoredBadge = {},
   children,
 }: PropsWithChildren<ProviderProps>) {
   const initialState = {
@@ -167,6 +169,7 @@ function ProductSummaryProvider({
     selectedItem: selectedItem ?? null,
     selectedQuantity: 1,
     listName,
+    sponsoredBadge,
     query: buildProductQuery({ product }),
     inView: false,
   }
