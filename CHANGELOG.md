@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- `position` action to product summary context
+
 ## [0.11.0] - 2023-12-20
 
 ### Added

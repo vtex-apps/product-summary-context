@@ -62,6 +62,13 @@ type SetInView = {
   }
 }
 
+type SetPosition = {
+  type: 'SET_POSITION'
+  args: {
+    position: number
+  }
+}
+
 type Action =
   | SetProductAction
   | SetHoverAction
@@ -70,6 +77,7 @@ type Action =
   | SetProductQuantity
   | SetProductQueryAction
   | SetInView
+  | SetPosition
 
 export function reducer(state: State, action: Action): State {
   switch (action.type) {
@@ -115,6 +123,11 @@ export function reducer(state: State, action: Action): State {
       return {
         ...state,
         inView: action.args.inView,
+      }
+    case 'SET_POSITION':
+      return {
+        ...state,
+        position: action.args.position,
       }
 
     default:
@@ -172,6 +185,7 @@ function ProductSummaryProvider({
     sponsoredBadge,
     query: buildProductQuery({ product }),
     inView: false,
+    position: null,
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)

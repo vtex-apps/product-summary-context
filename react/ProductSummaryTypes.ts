@@ -9,7 +9,9 @@ export interface State {
   productQuery?: string
   listName?: string
   query?: string
+  position?: number
   sponsoredBadge?: SponsoredBadgeOptions
+
 }
 
 export interface Product {
