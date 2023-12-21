@@ -10,6 +10,8 @@ export interface State {
   listName?: string
   query?: string
   position?: number
+  sponsoredBadge?: SponsoredBadgeOptions
+
 }
 
 export interface Product {
@@ -117,3 +119,10 @@ interface SelectedProperty {
   key: string;
   value: string
 }
+
+export type SponsoredBadgeOptions = {
+  label?: string;
+  position?: SponsoredBadgePosition
+}
+
+export type SponsoredBadgePosition = "titleTop" | "containerTopLeft" | "none";
