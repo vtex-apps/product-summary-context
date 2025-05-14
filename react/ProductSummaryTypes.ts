@@ -33,6 +33,7 @@ export interface Product {
   skuSpecifications: SkuSpecification[];
   sku: SingleSKU;
   titleTag: string;
+  deliveryPromisesBadges: string[];
 }
 
 interface Advertisement {
