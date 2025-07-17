@@ -33,7 +33,7 @@ export interface Product {
   skuSpecifications: SkuSpecification[];
   sku: SingleSKU;
   titleTag: string;
-  deliveryPromisesBadges: BadgeItem[];
+  deliveryPromisesBadges?: BadgeItem[];
 }
 
 interface BadgeItem {
