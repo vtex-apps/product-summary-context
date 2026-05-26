@@ -59,6 +59,13 @@ interface Image {
   imageUrl: string
 }
 
+export interface SkuNonStructuredAttribute {
+  id: string
+  name: string
+  value: string
+  visible: boolean
+}
+
 export interface SKU {
   name: string
   itemId: string
@@ -66,6 +73,7 @@ export interface SKU {
   referenceId: [{ Value: string }]
   sellers: Seller[]
   images: Image[]
+  attributes?: SkuNonStructuredAttribute[]
 }
 
 export interface SingleSKU extends SKU {
